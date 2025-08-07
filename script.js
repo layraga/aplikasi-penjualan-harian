@@ -3,7 +3,9 @@ const harga = {
     nasi3k: 3000,
     nasi5k: 5000,
     minuman: 1000,
-    kerupuk: 1000
+    kerupuk: 1000,
+    kuePuksi: 1000,
+    kueBasa: 1000
 };
 
 // Fungsi untuk menyimpan stok awal ke localStorage
@@ -12,7 +14,9 @@ function simpanStokAwal() {
         nasi3k: document.getElementById('stokNasi3k').value,
         nasi5k: document.getElementById('stokNasi5k').value,
         minuman: document.getElementById('stokMinuman').value,
-        kerupuk: document.getElementById('stokKerupuk').value
+        kerupuk: document.getElementById('stokKerupuk').value,
+        kuePuksi: document.getElementById('stokKuePuksi').value,
+        kueBasa: document.getElementById('stokKueBasa').value
     };
     localStorage.setItem('stokAwalPenjualan', JSON.stringify(stokAwal));
 }
@@ -26,6 +30,8 @@ function muatStokAwal() {
         document.getElementById('stokNasi5k').value = stokAwal.nasi5k;
         document.getElementById('stokMinuman').value = stokAwal.minuman;
         document.getElementById('stokKerupuk').value = stokAwal.kerupuk;
+        document.getElementById('stokKuePuksi').value = stokAwal.kuePuksi;
+        document.getElementById('stokKueBasa').value = stokAwal.kueBasa;
     }
 }
 
@@ -40,30 +46,38 @@ function hitungPenjualan(event) {
     const stokNasi5k = parseInt(document.getElementById('stokNasi5k').value) || 0;
     const stokMinuman = parseInt(document.getElementById('stokMinuman').value) || 0;
     const stokKerupuk = parseInt(document.getElementById('stokKerupuk').value) || 0;
+    const stokKuePuksi = parseInt(document.getElementById('stokKuePuksi').value) || 0;
+    const stokKueBasa = parseInt(document.getElementById('stokKueBasa').value) || 0;
 
     // Ambil data sisa barang
     const sisaNasi3k = parseInt(document.getElementById('sisaNasi3k').value) || 0;
     const sisaNasi5k = parseInt(document.getElementById('sisaNasi5k').value) || 0;
     const sisaMinuman = parseInt(document.getElementById('sisaMinuman').value) || 0;
     const sisaKerupuk = parseInt(document.getElementById('sisaKerupuk').value) || 0;
+    const sisaKuePuksi = parseInt(document.getElementById('sisaKuePuksi').value) || 0;
+    const sisaKueBasa = parseInt(document.getElementById('sisaKueBasa').value) || 0;
 
     // Hitung jumlah barang yang laku terjual
     const lakuNasi3k = Math.max(0, stokNasi3k - sisaNasi3k);
     const lakuNasi5k = Math.max(0, stokNasi5k - sisaNasi5k);
     const lakuMinuman = Math.max(0, stokMinuman - sisaMinuman);
     const lakuKerupuk = Math.max(0, stokKerupuk - sisaKerupuk);
+    const lakuKuePuksi = Math.max(0, stokKuePuksi - sisaKuePuksi);
+    const lakuKueBasa = Math.max(0, stokKueBasa - sisaKueBasa);
 
     // Hitung total uang per item
     const jumlahUangNasi3k = lakuNasi3k * harga.nasi3k;
     const jumlahUangNasi5k = lakuNasi5k * harga.nasi5k;
     const jumlahUangMinuman = lakuMinuman * harga.minuman;
     const jumlahUangKerupuk = lakuKerupuk * harga.kerupuk;
+    const jumlahUangKuePuksi = lakuKuePuksi * harga.kuePuksi;
+    const jumlahUangKueBasa = lakuKueBasa * harga.kueBasa;
 
     // Hitung total barang yang laku
-    const totalBarangLaku = lakuNasi3k + lakuNasi5k + lakuMinuman + lakuKerupuk;
+    const totalBarangLaku = lakuNasi3k + lakuNasi5k + lakuMinuman + lakuKerupuk + lakuKuePuksi + lakuKueBasa;
 
     // Hitung total pemasukan
-    const totalPemasukan = jumlahUangNasi3k + jumlahUangNasi5k + jumlahUangMinuman + jumlahUangKerupuk;
+    const totalPemasukan = jumlahUangNasi3k + jumlahUangNasi5k + jumlahUangMinuman + jumlahUangKerupuk + jumlahUangKuePuksi + jumlahUangKueBasa;
 
     // Tampilkan hasil
     document.getElementById('totalPemasukan').textContent = `Rp ${totalPemasukan.toLocaleString('id-ID')}`;
@@ -80,6 +94,12 @@ function hitungPenjualan(event) {
     
     document.getElementById('lakuKerupuk').textContent = lakuKerupuk;
     document.getElementById('jumlahUangKerupuk').textContent = `Rp ${jumlahUangKerupuk.toLocaleString('id-ID')}`;
+
+    document.getElementById('lakuKuePuksi').textContent = lakuKuePuksi;
+    document.getElementById('jumlahUangKuePuksi').textContent = `Rp ${jumlahUangKuePuksi.toLocaleString('id-ID')}`;
+
+    document.getElementById('lakuKueBasa').textContent = lakuKueBasa;
+    document.getElementById('jumlahUangKueBasa').textContent = `Rp ${jumlahUangKueBasa.toLocaleString('id-ID')}`;
 }
 
 // Fungsi untuk mencetak laporan sebagai gambar
