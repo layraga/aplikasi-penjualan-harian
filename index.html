@@ -9,11 +9,13 @@
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
-                navigator.serviceWorker.register('sw.js').then(registration => {
-                    console.log('Service Worker registered:', registration);
-                }).catch(error => {
-                    console.log('Service Worker registration failed:', error);
-                });
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registered:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Service Worker registration failed:', error);
+                    });
             });
         }
     </script>
@@ -99,11 +101,38 @@
                 <hr>
 
                 <h3>Detail Penjualan</h3>
-                <div class="detail-penjualan">
-                    <p><span>Nasi Rp 3.000:</span> <span id="detailNasi3k">Laku (0), Uang: Rp 0</span></p>
-                    <p><span>Nasi Rp 5.000:</span> <span id="detailNasi5k">Laku (0), Uang: Rp 0</span></p>
-                    <p><span>Minuman:</span> <span id="detailMinuman">Laku (0), Uang: Rp 0</span></p>
-                    <p><span>Kerupuk:</span> <span id="detailKerupuk">Laku (0), Uang: Rp 0</span></p>
+                <div class="detail-penjualan-mobile">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Produk</th>
+                                <th>Laku</th>
+                                <th>Uang</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Nasi Rp 3.000</td>
+                                <td id="lakuNasi3k">0</td>
+                                <td id="jumlahUangNasi3k">Rp 0</td>
+                            </tr>
+                            <tr>
+                                <td>Nasi Rp 5.000</td>
+                                <td id="lakuNasi5k">0</td>
+                                <td id="jumlahUangNasi5k">Rp 0</td>
+                            </tr>
+                            <tr>
+                                <td>Minuman</td>
+                                <td id="lakuMinuman">0</td>
+                                <td id="jumlahUangMinuman">Rp 0</td>
+                            </tr>
+                            <tr>
+                                <td>Kerupuk</td>
+                                <td id="lakuKerupuk">0</td>
+                                <td id="jumlahUangKerupuk">Rp 0</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

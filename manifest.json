@@ -2,7 +2,7 @@
   "name": "Aplikasi Pencatatan Penjualan Harian",
   "short_name": "Penjualan",
   "description": "Aplikasi web untuk mencatat penjualan harian, menghitung pemasukan, dan mengelola stok.",
-  "start_url": "index.html",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#f5f7fa",
   "theme_color": "#3498db",

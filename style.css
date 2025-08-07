@@ -190,21 +190,6 @@ hr {
     margin: 25px 0;
 }
 
-.detail-penjualan p {
-    font-size: 1.1em;
-    margin: 10px 0;
-    color: #555;
-    display: flex;
-    justify-content: space-between;
-    padding: 8px 15px;
-    background-color: #f1f7fc;
-    border-radius: 6px;
-}
-
-.detail-penjualan p span:first-child {
-    font-weight: 600;
-}
-
 /* Penyesuaian untuk tampilan mobile */
 @media (max-width: 768px) {
     body {
@@ -236,5 +221,49 @@ hr {
     .total-pemasukan,
     .total-barang-laku {
         font-size: 1.8em;
+    }
+}
+
+/* Style untuk detail penjualan versi mobile */
+.detail-penjualan-mobile {
+    overflow-x: auto; /* Agar tabel bisa di-scroll horizontal jika terlalu lebar */
+    margin-top: 15px;
+}
+
+
+.detail-penjualan-mobile table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+
+
+.detail-penjualan-mobile th,
+.detail-penjualan-mobile td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+    white-space: nowrap; /* Agar teks tidak wrap pada sel kecil */
+}
+
+
+.detail-penjualan-mobile th {
+    background-color: #f2f2f2;
+    font-weight: 600;
+}
+
+
+.detail-penjualan-mobile tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .detail-penjualan-mobile th,
+    .detail-penjualan-mobile td {
+        padding: 6px 8px;
+        font-size: 0.85em;
     }
 }
