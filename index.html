@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aplikasi Pencatatan Penjualan Harian</title>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js').then(registration => {
+                    console.log('Service Worker registered:', registration);
+                }).catch(error => {
+                    console.log('Service Worker registration failed:', error);
+                });
+            });
+        }
+    </script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>Pencatatan Penjualan Harian</h1>
+            <p>Kelola penjualan Anda dengan mudah</p>
+        </header>
+
+        <form id="formPenjualan">
+            <div class="card">
+                <h2>Stok Awal Hari Ini</h2>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="stokNasi3k">Nasi (Rp 3.000):</label>
+                        <input type="number" id="stokNasi3k" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="stokNasi5k">Nasi (Rp 5.000):</label>
+                        <input type="number" id="stokNasi5k" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="stokMinuman">Minuman (Rp 1.000):</label>
+                        <input type="number" id="stokMinuman" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="stokKerupuk">Kerupuk (Rp 1.000):</label>
+                        <input type="number" id="stokKerupuk" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>Sisa Barang Akhir Hari</h2>
+                <div class="input-grid">
+                    <div class="input-group">
+                        <label for="sisaNasi3k">Nasi (Rp 3.000):</label>
+                        <input type="number" id="sisaNasi3k" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="sisaNasi5k">Nasi (Rp 5.000):</label>
+                        <input type="number" id="sisaNasi5k" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="sisaMinuman">Minuman (Rp 1.000):</label>
+                        <input type="number" id="sisaMinuman" min="0" value="0">
+                    </div>
+                    <div class="input-group">
+                        <label for="sisaKerupuk">Kerupuk (Rp 1.000):</label>
+                        <input type="number" id="sisaKerupuk" min="0" value="0">
+                    </div>
+                </div>
+            </div>
+
+            <div class="button-group">
+                <button type="submit" class="btn btn-primary">Hitung Penjualan</button>
+                <button type="button" id="cetakGambarButton" class="btn btn-secondary">Cetak Sebagai Gambar</button>
+                <button type="button" id="cetakPdfButton" class="btn btn-pdf">Cetak Sebagai PDF</button>
+            </div>
+        </form>
+
+        <div id="hasil" class="card hasil-container">
+            <h2>Hasil Perhitungan</h2>
+            <div id="laporan">
+                <div class="hasil-grid">
+                    <div class="result-box">
+                        <h3>Total Pemasukan</h3>
+                        <p class="total-pemasukan"><span id="totalPemasukan">Rp 0</span></p>
+                    </div>
+                    <div class="result-box">
+                        <h3>Total Barang Laku</h3>
+                        <p class="total-barang-laku"><span id="totalBarangLaku">0</span></p>
+                    </div>
+                </div>
+
+                <hr>
+
+                <h3>Detail Penjualan</h3>
+                <div class="detail-penjualan">
+                    <p><span>Nasi Rp 3.000:</span> <span id="detailNasi3k">Laku (0), Uang: Rp 0</span></p>
+                    <p><span>Nasi Rp 5.000:</span> <span id="detailNasi5k">Laku (0), Uang: Rp 0</span></p>
+                    <p><span>Minuman:</span> <span id="detailMinuman">Laku (0), Uang: Rp 0</span></p>
+                    <p><span>Kerupuk:</span> <span id="detailKerupuk">Laku (0), Uang: Rp 0</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
